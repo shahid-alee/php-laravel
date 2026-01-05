@@ -100,10 +100,10 @@ td {
 $conn = new mysqli("localhost", "root", "", "first_project");
 if ($conn->connect_error) die("Connection failed");
 
-/* 🔐 ENCRYPTION KEY */
-$key = "my_secret_key_123";
+/*  ENCRYPTION KEY */
+$key = "my_secret_key_12";
 
-/* 🔓 DECRYPT FUNCTION (ONLY ONCE) */
+/*  DECRYPT FUNCTION (ONLY ONCE) */
 function decryptPassword($encrypted) {
     global $key;
     return openssl_decrypt($encrypted, "AES-128-ECB", $key);

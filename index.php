@@ -107,7 +107,7 @@ $conn->query("CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(255)
 )");
 
-/* 🔐 ENCRYPT FUNCTION (ONLY ONCE) */
+/*  ENCRYPT FUNCTION (ONLY ONCE) */
 $key = "my_secret_key_123";
 function encryptPassword($password) {
     global $key;
@@ -143,7 +143,7 @@ if (isset($_POST['submit'])) {
         '$password'
     )");
 
-    header("Location: users.php");
+    header("Location: homepage.php");
     exit;
 }
 
@@ -169,7 +169,7 @@ if (isset($_POST['update'])) {
             WHERE id=$id");
     }
 
-    header("Location: users.php");
+    header("Location: homepage.php");
     exit;
 }
 ?>
