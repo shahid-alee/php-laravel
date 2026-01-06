@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+
+body {
+    font-family: Arial, sans-serif;
+    background: #bde6bbff;
+    margin: 0;
+    padding: 0;
+}
 /* RESET */
 * {
     margin: 0;
@@ -13,9 +20,10 @@
     font-family: 'Arial', sans-serif;
 }
 
-/* NAVBAR */
+/* /* NAVBAR */
 .navbar {
     display: flex;
+    margin-top:-70px ;
     justify-content: space-between;
     align-items: center;
     padding: 15px 50px;
@@ -152,12 +160,12 @@
 <!-- NAVBAR -->
 <div class="navbar">
     <div class="logo">MyPortfolio</div>
-    <div class="nav-links">
-        <a href="index.php#home">Home</a>
-        <a href="about.php">About</a>
-        <a href="index.php#skills">Skills</a>
-        <a href="index.php#projects">Projects</a>
-        <a href="index.php#contact">Contact</a>
+    <div class="nav-links"> 
+        <a href="index.php">Home</a>
+        <a href="about.php">About Us</a>
+        <a href="skills.php">Skills</a>
+        <a href="projects.php">Projects</a>
+        <a href="contact.php">Contact Us</a>
     </div>
 </div>
 
@@ -169,7 +177,7 @@
 <!-- ABOUT CONTENT -->
 <div class="about-content">
     <img src="https://images.unsplash.com/photo-1603415526960-f8f16e7b6f2e?auto=format&fit=crop&w=600&q=80" alt="Profile Picture">
-    <p>Hello! I'm <strong>John Doe</strong>, a passionate MERN stack developer. I specialize in building full-stack web applications using <strong>MongoDB, Express, React, and Node.js</strong>. My goal is to create interactive, responsive, and user-friendly applications that provide excellent user experiences. I love learning new technologies and continuously improving my skills to deliver high-quality projects.</p>
+    <p>Hello! I'm <strong>Shahid ALi</strong>, a passionate MERN stack developer. I specialize in building full-stack web applications using <strong>MongoDB, Express, React, and Node.js</strong>. My goal is to create interactive, responsive, and user-friendly applications that provide excellent user experiences. I love learning new technologies and continuously improving my skills to deliver high-quality projects.</p>
 </div>
 
 <!-- INFO BOXES -->
@@ -190,7 +198,7 @@
 
 <!-- FOOTER -->
 <div class="footer">
-    &copy; <?php echo date("Y"); ?> John Doe | MERN Stack Developer
+    &copy; <?php echo date("Y"); ?>Shahid Ali  | MERN Stack Developer
 </div>
 
 </body>

@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+body {
+    font-family: Arial, sans-serif;
+    background: #bde6bbff;
+    margin: 0;
+    padding: 0;
+}
 /* RESET */
 * {
     margin: 0;
@@ -16,6 +22,7 @@
 /* NAVBAR */
 .navbar {
     display: flex;
+    margin-top:-70px ;
     justify-content: space-between;
     align-items: center;
     padding: 15px 50px;
@@ -192,15 +199,14 @@
 <!-- NAVBAR -->
 <div class="navbar">
     <div class="logo">MyPortfolio</div>
-    <div class="nav-links">
-        <a href="index.php#home">Home</a>
-        <a href="about.php">About</a>
-        <a href="index.php#skills">Skills</a>
-        <a href="index.php#projects">Projects</a>
-        <a href="contact.php">Contact</a>
+    <div class="nav-links"> 
+        <a href="index.php">Home</a>
+        <a href="about.php">About Us</a>
+        <a href="skills.php">Skills</a>
+        <a href="projects.php">Projects</a>
+        <a href="contact.php">Contact Us</a>
     </div>
 </div>
-
 <!-- HERO -->
 <div class="contact-hero">
     <h1>Contact Me</h1>
@@ -230,7 +236,7 @@
     <div class="contact-info">
         <div class="info-box">
             <h3>📍 Location</h3>
-            <p>Rawalpindi, Pakistan</p>
+            <p> Ik solutions 6 th road Rawalpindi, Pakistan</p>
         </div>
         <div class="info-box">
             <h3>📞 Phone</h3>

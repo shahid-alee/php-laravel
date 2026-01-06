@@ -1,205 +1,272 @@
+<?php
+session_start(); // Start session on top
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>User Details</title>
+    <title>My Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background: #9fdd9dff;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    width: 600px;
-    max-width: 95%;
-    margin: 60px auto;
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 35px rgba(0,0,0,0.1);
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-label {
-    margin-top: 20px;
-    font-weight: bold;
-    display: block;
-    color: #555;
-}
-
-input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 6px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-}
-
-input:focus {
-    border-color: #4CAF50;
-    outline: none;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    background: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    margin-top: 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #43a047;
-}
-
-a {
-    display: block;
-    text-align: center;
-    margin-top: 15px;
-    color: #4CAF50;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* Responsive */
-@media (max-width: 480px) {
-    .container {
-        width: 90%;
-        padding: 15px;
-        margin: 30px auto;
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #bde6bbff;
+        margin: 0;
+        padding: 0;
     }
-}
-</style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    /* NAVBAR */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 50px;
+        background: #0D1117;
+        color: white;
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+    }
+    .logo { font-size: 24px; font-weight: bold; color: #4CAF50; }
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        margin-left: 25px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .nav-links a:hover { color: #4CAF50; }
+    .nav-btn {
+        padding: 8px 18px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-left: 15px;
+    }
+    .signup-btn {
+        background: transparent;
+        color: #4CAF50;
+        border: 2px solid #4CAF50;
+    }
+    .signup-btn:hover {
+        background: #4CAF50;
+        color: white;
+    }
+    .profile-btn {
+        background: #4CAF50;
+        color: white;
+    }
+    .profile-btn:hover {
+        background: #43a047;
+    }
+
+    /* HERO SECTION */
+    .hero {
+        height: 100vh;
+        background: url('https://images.unsplash.com/photo-1605902711622-cfb43c4436d6?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        position: relative;
+    }
+    .hero::after {
+        content: "";
+        position: absolute;
+        left:0; top:0;
+        width:100%; height:100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero h1 { font-size: 50px; margin-bottom: 20px; }
+    .hero p { font-size: 22px; margin-bottom: 30px; }
+    .hero a {
+        text-decoration: none;
+        color: white;
+        background: #4CAF50;
+        padding: 12px 25px;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .hero a:hover { background: #43a047; }
+
+    section { padding: 80px 50px; }
+    section h2 { text-align: center; margin-bottom: 40px; color: #0D1117; font-size: 36px; }
+
+    /* ABOUT */
+    .about {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+    }
+    .about img { width: 300px; border-radius: 10px; }
+    .about p { max-width: 600px; font-size: 18px; line-height: 1.6; color: #333; }
+
+    /* SKILLS */
+    .skills {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+    .skill-box {
+        background: #f1f1f1;
+        padding: 20px;
+        width: 200px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+    .skill-box:hover { transform: scale(1.05); }
+    .skill-box h3 { margin-bottom: 15px; color: #4CAF50; }
+    .skill-box p { color: #555; }
+
+    /* PROJECTS */
+    .projects {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+    .project-box {
+        width: 300px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+    .project-box img { width: 100%; height: 200px; object-fit: cover; }
+    .project-box:hover { transform: scale(1.05); }
+    .project-box .content { padding: 15px; }
+    .project-box .content h3 { color: #4CAF50; margin-bottom: 10px; }
+    .project-box .content p { color: #555; font-size: 14px; }
+
+    /* CONTACT */
+    .contact form {
+        max-width: 600px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .contact input, .contact textarea {
+        padding: 12px;
+        margin-bottom: 15px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+    }
+    .contact button {
+        padding: 15px;
+        background: #4CAF50;
+        color: white;
+        border: none;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    .contact button:hover { background: #43a047; }
+
+    .footer {
+        background: #0D1117;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+
+    @media(max-width: 768px){
+        .about { flex-direction: column; text-align: center;}
+        .hero h1 { font-size: 36px;}
+        .hero p { font-size: 18px;}
+    }
+    </style>
 </head>
 
 <body>
 
-<div class="container">
-<h1>User Details</h1>
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">MyPortfolio</div>
 
-<?php
-$conn = new mysqli("localhost", "root", "", "first_project");
-if ($conn->connect_error) die("Connection failed");
+    <div class="nav-links"> 
+        <a href="homepage.php">Home</a>
+        <a href="about.php">About Us</a>
+        <a href="skills.php">Skills</a>
+        <a href="projects.php">Projects</a>
+        <a href="contact.php">Contact Us</a>
 
-/* CREATE TABLE */
-$conn->query("CREATE TABLE IF NOT EXISTS users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
-    userName VARCHAR(100),
-    email VARCHAR(100),
-    address VARCHAR(200),
-    password VARCHAR(255)
-)");
+        <!-- Signup button -->
+        <a href="login.php" class="nav-btn signup-btn">Sign Up</a>
 
-/*  ENCRYPT FUNCTION (ONLY ONCE) */
-$key = "my_secret_key_123";
-function encryptPassword($password) {
-    global $key;
-    return openssl_encrypt($password, "AES-128-ECB", $key);
-}
+        <!-- Profile button: Only logged-in users go to profile.php -->
+        <?php if(isset($_SESSION['user_id'])): ?>
+            <a href="profile.php" class="nav-btn profile-btn">Profile</a>
+        <?php else: ?>
+            <a href="login.php" class="nav-btn profile-btn">Profile</a>
+        <?php endif; ?>
+    </div>
+</div>
 
-/* DEFAULT VALUES */
-$id = $name = $userName = $email = $address = "";
+<!-- HERO -->
+<div class="hero" id="home">
+    <div class="hero-content">
+        <h1>Hi, I'm Shahid ALi</h1>
+        <p>MERN Stack Developer | Web Developer | Full Stack developer</p>
+        <a href="#contact">Hire Me</a>
+    </div>
+</div>
 
-/* FETCH FOR EDIT */
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $res = $conn->query("SELECT * FROM users WHERE id=$id");
-    if ($res->num_rows > 0) {
-        $row = $res->fetch_assoc();
-        $name = $row['name'];
-        $userName = $row['userName'];
-        $email = $row['email'];
-        $address = $row['address'];
-    }
-}
+<!-- ABOUT -->
+<section class="about" id="about">
+    <h2>About Me</h2>
+    <img src="https://images.unsplash.com/photo-1603415526960-f8f16e7b6f2e?auto=format&fit=crop&w=600&q=80" alt="Profile">
+    <p>Hello! I'm a passionate MERN stack developer with experience building web applications using MongoDB, Express, React, and Node.js. I love creating interactive and responsive web apps that provide excellent user experience.</p>
+</section>
 
-/* INSERT */
-if (isset($_POST['submit'])) {
-    $password = encryptPassword($_POST['password']);
+<!-- SKILLS -->
+<section class="skills" id="skills">
+    <h2>My Skills</h2>
+    <div class="skill-box"><h3>MongoDB</h3><p>Database management & NoSQL expertise</p></div>
+    <div class="skill-box"><h3>Express.js</h3><p>Backend server & API development</p></div>
+    <div class="skill-box"><h3>React.js</h3><p>Frontend development & SPA creation</p></div>
+    <div class="skill-box"><h3>Node.js</h3><p>Server-side JavaScript & REST APIs</p></div>
+    <div class="skill-box"><h3>JavaScript</h3><p>Programming & ES6+ expertise</p></div>
+</section>
 
-    $conn->query("INSERT INTO users (name, userName, email, address, password)
-    VALUES (
-        '{$_POST['name']}',
-        '{$_POST['userName']}',
-        '{$_POST['email']}',
-        '{$_POST['address']}',
-        '$password'
-    )");
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+    <h2>Projects</h2>
+    <div class="project-box"><img src="/images/office.jpg" alt="Project1"><div class="content"><h3>Portfolio Website</h3><p>Responsive portfolio website built using React and Node.js backend.</p></div></div>
+    <div class="project-box"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="Project2"><div class="content"><h3>E-commerce App</h3><p>Full-stack MERN e-commerce application with cart and payment integration.</p></div></div>
+    <div class="project-box"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="Project3"><div class="content"><h3>Blog Platform</h3><p>MERN stack blog platform with user authentication and CRUD operations.</p></div></div>
+</section>
 
-    header("Location: homepage.php");
-    exit;
-}
+<!-- CONTACT -->
+<section class="contact" id="contact">
+    <h2>Contact Me</h2>
+    <form method="POST" action="send_contact.php">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
 
-/* UPDATE */
-if (isset($_POST['update'])) {
-    $id = $_POST['id'];
-
-    if (!empty($_POST['password'])) {
-        $password = encryptPassword($_POST['password']);
-        $conn->query("UPDATE users SET
-            name='{$_POST['name']}',
-            userName='{$_POST['userName']}',
-            email='{$_POST['email']}',
-            address='{$_POST['address']}',
-            password='$password'
-            WHERE id=$id");
-    } else {
-        $conn->query("UPDATE users SET
-            name='{$_POST['name']}',
-            userName='{$_POST['userName']}',
-            email='{$_POST['email']}',
-            address='{$_POST['address']}'
-            WHERE id=$id");
-    }
-
-    header("Location: homepage.php");
-    exit;
-}
-?>
-
-<form method="POST">
-<input type="hidden" name="id" value="<?= $id ?>">
-
-<label>Name</label>
-<input type="text" name="name" value="<?= $name ?>" required>
-
-<label>User Name</label>
-<input type="text" name="userName" value="<?= $userName ?>" required>
-
-<label>Email</label>
-<input type="email" name="email" value="<?= $email ?>" required>
-
-<label>Address</label>
-<input type="text" name="address" value="<?= $address ?>" required>
-
-<label>Password <?= ($id) ? "(leave blank to keep same)" : "" ?></label>
-<input type="password" name="password" <?= ($id=="") ? "required" : "" ?>>
-
-<?php if ($id=="") { ?>
-    <button type="submit" name="submit">Submit</button>
-<?php } else { ?>
-    <button type="submit" name="update">Update</button>
-<?php } ?>
-</form>
-
-<a href="users.php">View Users</a>
+<!-- FOOTER -->
+<div class="footer">
+    &copy; 2026 Shahid Ali| MERN Stack Developer | Follow me on
+    <a href="#" style="color:#4CAF50; text-decoration:none;">LinkedIn</a>, 
+    <a href="#" style="color:#4CAF50; text-decoration:none;">GitHub</a>
 </div>
 
 </body>

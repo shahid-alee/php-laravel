@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+
+body {
+    font-family: Arial, sans-serif;
+    background: #bde6bbff;
+    margin: 0;
+    padding: 0;
+}
 /* RESET */
 * {
     margin: 0;
@@ -16,6 +23,7 @@
 /* NAVBAR */
 .navbar {
     display: flex;
+    margin-top:-70px ;
     justify-content: space-between;
     align-items: center;
     padding: 15px 50px;
@@ -43,6 +51,7 @@
 .navbar .nav-links a:hover {
     color: #4CAF50;
 }
+
 
 /* HERO SECTION */
 .hero {
@@ -135,12 +144,12 @@
 <!-- NAVBAR -->
 <div class="navbar">
     <div class="logo">MyPortfolio</div>
-    <div class="nav-links">
-        <a href="index.php#home">Home</a>
-        <a href="about.php">About</a>
+    <div class="nav-links"> 
+        <a href="index.php">Home</a>
+        <a href="about.php">About Us</a>
         <a href="skills.php">Skills</a>
-        <a href="index.php#projects">Projects</a>
-        <a href="contact.php">Contact</a>
+        <a href="projects.php">Projects</a>
+        <a href="contact.php">Contact Us</a>
     </div>
 </div>
 
@@ -166,6 +175,22 @@
         <h3>JavaScript</h3>
         <div class="skill-bar">
             <div class="skill-bar-fill" style="width: 90%;">90%</div>
+        </div>
+    </div>
+
+    <!-- Skill 2 -->
+    <div class="skill">
+        <h3>PHP</h3>
+        <div class="skill-bar">
+            <div class="skill-bar-fill" style="width: 30%;">30%</div>
+        </div>
+    </div>
+
+    <!-- Skill 2 -->
+    <div class="skill">
+        <h3>laravel</h3>
+        <div class="skill-bar">
+            <div class="skill-bar-fill" style="width: 10%;">10%</div>
         </div>
     </div>
 
@@ -205,7 +230,7 @@
 
 <!-- FOOTER -->
 <div class="footer">
-    &copy; <?php echo date("Y"); ?> John Doe | MERN Stack Developer
+    &copy; <?php echo date("Y"); ?> Shahid Ali MERN Stack Developer
 </div>
 
 <!-- ANIMATION SCRIPT -->

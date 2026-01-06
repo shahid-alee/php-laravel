@@ -101,7 +101,7 @@ $conn = new mysqli("localhost", "root", "", "first_project");
 if ($conn->connect_error) die("Connection failed");
 
 /*  ENCRYPTION KEY */
-$key = "my_secret_key_12";
+$key = "my_secret_key_123";
 
 /*  DECRYPT FUNCTION (ONLY ONCE) */
 function decryptPassword($encrypted) {
